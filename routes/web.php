@@ -1,10 +1,9 @@
 <?php
 
 Route::get('/', function () {
-
-	$name = config('app.name');
-
-	dd($name);
-
     return view('welcome');
 });
+
+Route::get('/projects', 'ProjectsController@index');
+Route::post('/projects', 'ProjectsController@store');
+
