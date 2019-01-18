@@ -13,5 +13,16 @@
     @foreach($projects as $project)
         {{ $project->title }}
     @endforeach
+
+    <form action="projects" method="POST">
+        {{ csrf_field() }}
+        Title: <input type="text" name="title">
+        <br>
+        <br>
+        Description: <input type="text" name="description">
+        <br>
+        <br>
+        <input type="submit" value="Post the form">
+    </form>
 </body>
 </html>

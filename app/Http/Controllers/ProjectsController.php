@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreProjectPost;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,14 @@ class ProjectsController extends Controller
         return view('projects.index', compact('projects'));
     }
 
-    public function store()
+    public function store(StoreProjectPost $request)
     {
+        $validated = $request->validated();
+
+        if (!$validated){
+            return request()->session()->all();
+        }
+
         Project::create(request(['title', 'description']));
 
         return redirect('/projects');
